@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "get",
-    "url": "/user/logout",
+    "url": "/api/user/logout",
     "title": "Logout",
     "name": "apiName",
     "group": "User",
@@ -11,7 +11,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/user/login",
+    "url": "/api/user/login",
     "title": "Login",
     "name": "login",
     "group": "User",
@@ -48,38 +48,31 @@ define({ "api": [
         "200": [
           {
             "group": "200",
-            "type": "String",
+            "type": "Object",
             "optional": false,
-            "field": "id",
-            "description": "<p>User 's id</p>"
+            "field": "data",
+            "description": "<p>An user data payload</p>"
           },
           {
             "group": "200",
             "type": "String",
             "optional": false,
-            "field": "email",
-            "description": "<p>User 's email</p>"
+            "field": "access_token",
+            "description": "<p>Access token</p>"
           },
           {
             "group": "200",
             "type": "String",
             "optional": false,
-            "field": "username",
-            "description": "<p>User 's username</p>"
-          },
-          {
-            "group": "200",
-            "type": "String",
-            "optional": false,
-            "field": "avatar",
-            "description": "<p>User 's avatar</p>"
+            "field": "expires_in",
+            "description": "<p>Token expire time</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Body Success Response:",
-          "content": "{\n     id: '8b6284b0-f11b-11e7-9417-ed874abe0164',\n     email: 'youremail@example.com',\n     username: 'Bobby',\n     avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'\n}",
+          "content": "{\n     data: {\n         id: '8b6284b0-f11b-11e7-9417-ed874abe0164',\n         email: 'youremail@example.com',\n         user_name: 'Bobby',\n         avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'\n     },\n     access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMTU0MmUwLWYxM2QtMTFlN',\n     expires_in: '8h'\n}",
           "type": "Object"
         }
       ]
@@ -89,7 +82,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/user/register",
+    "url": "/api/user/register",
     "title": "Register",
     "name": "register",
     "group": "User",

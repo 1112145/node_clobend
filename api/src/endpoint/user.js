@@ -6,6 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const MSG = require('../constant/message');
 const ERROR = require('../constant/error');
 const CONSTANT = require('../constant');
+const jwt = require('jsonwebtoken');
 
 const db = require('../database');
 
@@ -62,7 +63,7 @@ passport.use(new LocalStrategy({
             return done(null, {
                 id: user.userid,
                 email: user.email,
-                username: user.username,
+                user_name: user.username,
                 avatar: user.avatar
             })
         })
@@ -71,7 +72,7 @@ passport.use(new LocalStrategy({
 
 /**
  * 
- * @api {post} /user/register Register
+ * @api {post} /api/user/register Register
  * @apiName register
  * @apiGroup User
  * @apiVersion  1.0.0
@@ -117,7 +118,7 @@ router.post('/register', (req, res) => {
 
 /**
  * 
- * @api {post} /user/login Login
+ * @api {post} /api/user/login Login
  * @apiName login
  * @apiGroup User
  * @apiVersion  1.0.0
@@ -126,10 +127,9 @@ router.post('/register', (req, res) => {
  * @apiParam  {String} email Email
  * @apiParam  {String} password Password
  * 
- * @apiSuccess (200) {String} id User 's id
- * @apiSuccess (200) {String} email User 's email
- * @apiSuccess (200) {String} username User 's username
- * @apiSuccess (200) {String} avatar User 's avatar
+ * @apiSuccess (200) {Object} data An user data payload
+ * @apiSuccess (200) {String} access_token Access token
+ * @apiSuccess (200) {String} expires_in Token expire time
  * 
  * @apiParamExample  {Object} Body Request Example:
    {
@@ -140,10 +140,14 @@ router.post('/register', (req, res) => {
  * 
  * @apiSuccessExample {Object} Body Success Response:
    {
-        id: '8b6284b0-f11b-11e7-9417-ed874abe0164',
-        email: 'youremail@example.com',
-        username: 'Bobby',
-        avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'
+        data: {
+            id: '8b6284b0-f11b-11e7-9417-ed874abe0164',
+            email: 'youremail@example.com',
+            user_name: 'Bobby',
+            avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'
+        },
+        access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMTU0MmUwLWYxM2QtMTFlN',
+        expires_in: '8h'
    }
  * 
  * 
@@ -160,7 +164,12 @@ router.post('/login', (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            return res.status(200).send(user);
+            const expireTime = '8h'
+            const token = jwt.sign(user,CONSTANT.SECRET_KEY,{
+                expiresIn: expireTime
+            })
+
+            return res.status(200).send({data: user, access_token: token, expires_in: expireTime });
         });
     })(req, res, next);
 });
@@ -168,7 +177,7 @@ router.post('/login', (req, res, next) => {
 
 /**
  * 
- * @api {get} /user/logout Logout
+ * @api {get} /api/user/logout Logout
  * @apiName apiName
  * @apiGroup User
  * @apiVersion  1.0.0
