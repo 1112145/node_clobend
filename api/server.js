@@ -17,6 +17,6 @@ app.get('/',(req,res) => {
 app.use('/api', api)
 
 
-app.listen(process.env.PORT, (req, res) => {
+app.listen(process.env.PORT || 5000, (req, res) => {
     console.log('API started at ' + process.env.PORT)
 })
