@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js"
+    "start": "pm2 start ecosystem.config.js",
+    "heroku": "pm2 start ecosystem.heroku.config.js"
   },
   "repository": {
     "type": "git",
