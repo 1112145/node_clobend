@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start ecosystem.config.js",
-    "heroku": "pm2 start ecosystem.config.heroku.js"
+    "heroku": "node ./node_modules/.bin/pm2 start --attach ecosystem.config.heroku.js"
   },
   "repository": {
     "type": "git",
