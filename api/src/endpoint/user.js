@@ -69,6 +69,31 @@ passport.use(new LocalStrategy({
     }
 ));
 
+/**
+ * 
+ * @api {post} /user/register Register
+ * @apiName register
+ * @apiGroup user
+ * @apiVersion  1.0.0
+ * 
+ * 
+ * @apiParam  {String} paramName description
+ * 
+ * @apiSuccess (200) {type} name description
+ * 
+ * @apiParamExample  {type} Request-Example:
+   {
+       property : value
+   }
+ * 
+ * 
+ * @apiSuccessExample {type} Success-Response:
+   {
+       property : value
+   }
+ * 
+ * 
+ */
 router.post('/register', (req, res) => {
     const userData = req.body;
     if (!userData.hasOwnProperty(CONSTANT.USERNAME_FIELD) || !userData.hasOwnProperty(CONSTANT.PASSWORD_FIELD)) {
