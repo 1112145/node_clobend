@@ -1,0 +1,33 @@
+{
+  "name": "node_clobend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1112145/node_clobend.git"
+  },
+  "author": "dangkhoaicao@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1112145/node_clobend/issues"
+  },
+  "homepage": "https://github.com/1112145/node_clobend#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql2": "^1.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.28.6",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.3",
+    "pm2": "^2.9.1"
+  }
+}
