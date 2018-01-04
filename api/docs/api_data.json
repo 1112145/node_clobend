@@ -1,10 +1,20 @@
 [
   {
+    "type": "get",
+    "url": "/user/logout",
+    "title": "Logout",
+    "name": "apiName",
+    "group": "User",
+    "version": "1.0.0",
+    "filename": "api/src/endpoint/user.js",
+    "groupTitle": "User"
+  },
+  {
     "type": "post",
-    "url": "/user/register",
-    "title": "Register",
-    "name": "register",
-    "group": "user",
+    "url": "/user/login",
+    "title": "Login",
+    "name": "login",
+    "group": "User",
     "version": "1.0.0",
     "parameter": {
       "fields": {
@@ -13,15 +23,100 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "paramName",
-            "description": "<p>description</p>"
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "Request-Example:",
-          "content": "{\n    property : value\n}",
+          "title": "Body Request Example:",
+          "content": "{\n    email : 'youremail@example.com',\n    password: 'yourblankpassword'\n}",
+          "type": "Object"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User 's id</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User 's email</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>User 's username</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "avatar",
+            "description": "<p>User 's avatar</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Body Success Response:",
+          "content": "{\n     id: '8b6284b0-f11b-11e7-9417-ed874abe0164',\n     email: 'youremail@example.com',\n     username: 'Bobby',\n     avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'\n}",
+          "type": "Object"
+        }
+      ]
+    },
+    "filename": "api/src/endpoint/user.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/user/register",
+    "title": "Register",
+    "name": "register",
+    "group": "User",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Registration email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Registration password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Body Request Example:",
+          "content": "{\n    email : 'youremail@example.com',\n    password: 'yourblankpassword'\n}",
           "type": "type"
         }
       ]
@@ -33,20 +128,20 @@
             "group": "200",
             "type": "type",
             "optional": false,
-            "field": "name",
-            "description": "<p>description</p>"
+            "field": "message",
+            "description": "<p>A success message</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "Success-Response:",
-          "content": "{\n    property : value\n}",
+          "title": "Body Success Response:",
+          "content": "{\n    message: 'Register success!'\n}",
           "type": "type"
         }
       ]
     },
-    "filename": "src/endpoint/user.js",
-    "groupTitle": "user"
+    "filename": "api/src/endpoint/user.js",
+    "groupTitle": "User"
   }
 ]

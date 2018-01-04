@@ -73,23 +73,25 @@ passport.use(new LocalStrategy({
  * 
  * @api {post} /user/register Register
  * @apiName register
- * @apiGroup user
+ * @apiGroup User
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} paramName description
+ * @apiParam  {String} email Registration email
+ * @apiParam  {String} password Registration password
  * 
- * @apiSuccess (200) {type} name description
+ * @apiSuccess (200) {type} message A success message
  * 
- * @apiParamExample  {type} Request-Example:
+ * @apiParamExample  {type} Body Request Example:
    {
-       property : value
+       email : 'youremail@example.com',
+       password: 'yourblankpassword'
    }
  * 
  * 
- * @apiSuccessExample {type} Success-Response:
+ * @apiSuccessExample {type} Body Success Response:
    {
-       property : value
+       message: 'Register success!'
    }
  * 
  * 
@@ -113,6 +115,39 @@ router.post('/register', (req, res) => {
     })
 });
 
+/**
+ * 
+ * @api {post} /user/login Login
+ * @apiName login
+ * @apiGroup User
+ * @apiVersion  1.0.0
+ * 
+ * 
+ * @apiParam  {String} email Email
+ * @apiParam  {String} password Password
+ * 
+ * @apiSuccess (200) {String} id User 's id
+ * @apiSuccess (200) {String} email User 's email
+ * @apiSuccess (200) {String} username User 's username
+ * @apiSuccess (200) {String} avatar User 's avatar
+ * 
+ * @apiParamExample  {Object} Body Request Example:
+   {
+       email : 'youremail@example.com',
+       password: 'yourblankpassword'
+   }
+ * 
+ * 
+ * @apiSuccessExample {Object} Body Success Response:
+   {
+        id: '8b6284b0-f11b-11e7-9417-ed874abe0164',
+        email: 'youremail@example.com',
+        username: 'Bobby',
+        avatar: 'https://image.flaticon.com/icons/svg/149/149071.svg'
+   }
+ * 
+ * 
+ */
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', function (err, user, info) {
         if (err) {
@@ -131,14 +166,15 @@ router.post('/login', (req, res, next) => {
 });
 
 
-
-// function ensureAuthenticated(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     }
-//     res.status(401).send(ERROR.unauthorized)
-// }
-
+/**
+ * 
+ * @api {get} /user/logout Logout
+ * @apiName apiName
+ * @apiGroup User
+ * @apiVersion  1.0.0
+ * 
+ * 
+ */
 router.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');

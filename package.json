@@ -7,7 +7,7 @@
     "start": "pm2 start ecosystem.config.js",
     "preinstall": "npm install pm2 -g",
     "heroku": "pm2 start ecosystem.heroku.config.js -i max --attach",
-    "docsgen": "apidoc -i src -o docs"
+    "docsgen": "apidoc -i ./api/src -o ./api/docs"
   },
   "repository": {
     "type": "git",
