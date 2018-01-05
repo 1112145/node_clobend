@@ -6,6 +6,7 @@ const username = process.env.DATABASE_USER;
 const password = process.env.DATABASE_PASSWORD;
 const host = process.env.DATABASE_ADDRESS;
 
+// Connect to database.
 const sequelize = new Sequelize(database, username, password, {
     host: host,
     dialect: 'mysql'

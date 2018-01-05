@@ -16,10 +16,6 @@ app.get('/', (req, res) => {
 
 app.use('/api', api);
 
-app.get('/test', verifyToken, (req, res) => {
-    res.send('aaaa');
-})
-
 
 app.listen(process.env.PORT || 5000, (req, res) => {
     console.log('API started at ' + process.env.PORT)
