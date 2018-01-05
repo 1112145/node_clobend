@@ -1,6 +1,36 @@
 [
   {
     "type": "get",
+    "url": "/api/auth/facebook",
+    "title": "Facebook",
+    "name": "facebook",
+    "group": "Auth",
+    "version": "1.0.0",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "type",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    property : value\n}",
+          "type": "type"
+        }
+      ]
+    },
+    "filename": "api/src/endpoint/auth.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "get",
     "url": "/api/user/logout",
     "title": "Logout",
     "name": "apiName",

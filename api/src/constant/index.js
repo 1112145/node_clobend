@@ -2,5 +2,7 @@ module.exports = {
     SALT: Number.parseInt(process.env.SALT),
     USERNAME_FIELD: 'email',
     PASSWORD_FIELD: 'password',
-    SECRET_KEY: 'secret_key'
+    SECRET_KEY: 'secret_key',
+    FB_APP_ID: process.env.FACEBOOK_APP_ID,
+    FB_APP_SECRET: process.env.FACEBOOK_APP_SECRET
 }

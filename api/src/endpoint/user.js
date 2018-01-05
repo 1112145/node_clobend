@@ -3,6 +3,7 @@ const uuid = require('uuid/v1');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const MSG = require('../constant/message');
 const ERROR = require('../constant/error');
 const CONSTANT = require('../constant');
@@ -10,7 +11,7 @@ const jwt = require('jsonwebtoken');
 
 const db = require('../database');
 
-router = express.Router();
+const router = express.Router();
 router.use(passport.initialize());
 router.use(passport.session());
 
@@ -165,11 +166,15 @@ router.post('/login', (req, res, next) => {
                 return next(err);
             }
             const expireTime = '8h'
-            const token = jwt.sign(user,CONSTANT.SECRET_KEY,{
+            const token = jwt.sign(user, CONSTANT.SECRET_KEY, {
                 expiresIn: expireTime
             })
 
-            return res.status(200).send({data: user, access_token: token, expires_in: expireTime });
+            return res.status(200).send({
+                data: user,
+                access_token: token,
+                expires_in: expireTime
+            });
         });
     })(req, res, next);
 });
@@ -188,6 +193,9 @@ router.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
 });
+
+
+
 
 
 
