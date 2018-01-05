@@ -6,5 +6,6 @@ module.exports = {
     password: Sequelize.STRING,
     avatar: Sequelize.STRING,
     email: Sequelize.STRING,
-    facebook_id: Sequelize.STRING
+    display_name: Sequelize.STRING,    
+    facebook_id: Sequelize.STRING,
 }
