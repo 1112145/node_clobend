@@ -7,21 +7,10 @@
     "group": "Auth",
     "version": "1.0.0",
     "success": {
-      "fields": {
-        "200": [
-          {
-            "group": "200",
-            "type": "type",
-            "optional": false,
-            "field": "name",
-            "description": "<p>description</p>"
-          }
-        ]
-      },
       "examples": [
         {
-          "title": "Success-Response:",
-          "content": "{\n    property : value\n}",
+          "title": "Success:",
+          "content": "\"Callback url: /api/auth/facebook/callback\"",
           "type": "type"
         }
       ]

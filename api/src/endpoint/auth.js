@@ -51,15 +51,8 @@ passport.use(new FacebookStrategy({
  * 
  * 
  * 
- * 
- * @apiSuccess (200) {type} name description
- * 
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
-   {
-       property : value
-   }
+ * @apiSuccessExample {type} Success:
+   "Callback url: /api/auth/facebook/callback"
  * 
  * 
  */
