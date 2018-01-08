@@ -20,6 +20,25 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/api/auth/google",
+    "title": "Google",
+    "name": "google",
+    "group": "Auth",
+    "version": "1.0.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success:",
+          "content": "\"Callback url: /api/auth/google/callback\"",
+          "type": "type"
+        }
+      ]
+    },
+    "filename": "api/src/endpoint/auth.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "get",
     "url": "/api/user/logout",
     "title": "Logout",
     "name": "apiName",
