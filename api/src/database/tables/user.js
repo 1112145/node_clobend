@@ -8,4 +8,5 @@ module.exports = {
     email: Sequelize.STRING,
     display_name: Sequelize.STRING,    
     facebook_id: Sequelize.STRING,
+    google_id: Sequelize.STRING
 }

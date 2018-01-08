@@ -106,14 +106,14 @@ passport.use(new GoogleStrategy({
                 defaults: {
                     display_name: profile.displayName,
                     username: profile.username,
-                    facebook_id: profile.id
+                    google_id: profile.id
                 }
             }).then((users) => {
                 done(null, {
                     id: users[0].userid,
                     email: users[0].email,
                     display_name: users[0].display_name,
-                    facebook_id: users[0].facebook_id
+                    google_id: users[0].google_id
                 })
             })
         })
