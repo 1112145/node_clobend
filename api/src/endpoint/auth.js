@@ -98,7 +98,6 @@ passport.use(new GoogleStrategy({
         callbackURL: CONSTANT.GG_CALLBACK_URL
     },
     function (accessToken, refreshToken, profile, done) {
-        console.log(profile.email);
         db.conn.sync().then(() => {
             db.tables.User.findOrCreate({
                 where: {
