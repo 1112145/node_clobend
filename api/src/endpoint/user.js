@@ -107,10 +107,10 @@ router.post('/register', (req, res) => {
     db.conn.sync().then(() => {
         findUserByUserNameField(CONSTANT.USERNAME_FIELD, userData[CONSTANT.USERNAME_FIELD]).then(user => {
             if (user) {
-                res.status(400).send(ERROR.EXISTED_EMAIL)
+                res.status(400).send({message: ERROR.EXISTED_EMAIL})
             } else {
                 createNewUser(userData).then((data) => {
-                    res.status(200).send(MSG.SUCCESS_REGISTER);
+                    res.status(200).send({message: MSG.SUCCESS_REGISTER});
                 })
             }
         })

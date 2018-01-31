@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const verifyToken = require('./src/middleware/verifyToken');
 const api = require('./src/endpoint');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
